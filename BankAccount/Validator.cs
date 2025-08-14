@@ -15,18 +15,14 @@ namespace BankAccount
         /// <param name="min">Minimum Inclusive Boundaries</param>
         /// <param name="max">Maximum Inclusive Boundaries</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException">Thrown if min boundary is greater than max boundary</exception>
         public bool IsWithinRange(double value, double min, double max)
         {
-            //return value >= min && value <= max;
-            if (value < min)
+            if (min > max)
             {
-                return true;
+                throw new ArgumentException("Minimum cannot be greater than maximum.");
             }
-            else if (value > max)
-            {
-                return true;
-            }
-            return false;
+            return value >= min && value <= max;
         }
     }
 }
